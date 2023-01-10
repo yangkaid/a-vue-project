@@ -11,6 +11,12 @@ const router = createRouter({
   strict: false,
   scrollBehavior: () => ({ left: 0, top: 0 })
 });
+// 未找到路由页面
+const notFoundRouter = {
+	path: "/:pathMatch(.*)*",
+	name: "notFound",
+	redirect: { path: "/404" }
+};
 // 获取views文件夹下的组件名称
 const getComponentName = (path) => {
   let pathArr = path.split('/')
@@ -30,6 +36,7 @@ router.beforeEach((to, from, next) => {
     }
     router.addRoute(routeItem)
   })
+  router.addRoute(notFoundRouter)
   next()
 })
 
