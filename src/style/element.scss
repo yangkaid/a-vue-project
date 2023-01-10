@@ -1,6 +1,8 @@
+$primary-color: #3860F4;
+
 @forward 'element-plus/theme-chalk/src/common/var.scss' with ($colors: ('white': #ffffff,
     'black': #000000,
-    'primary': ('base': pink,
+    'primary': ('base': $primary-color,
     ),
     'success': ('base': #67c23a,
     ),
@@ -14,11 +16,8 @@
     ),
   ),
 );
-:root {
-  --el-font-size-base: 14px;
-}
 
 .el-button {
-  height: 20px;
+  height: 30px;
   padding: 7px 9px;
 }
