@@ -5,7 +5,7 @@
 <script setup>
 import * as echarts from 'echarts';
 import { onMounted, ref } from 'vue';
-import { randomArray } from '../../../utils/index'
+import { randomArray } from '@/utils/index'
 const commonOptions = {
   xAxis: {
     type: 'category',

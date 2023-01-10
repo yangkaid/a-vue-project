@@ -53,7 +53,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { colorMix } from '../../utils/index'
+import { colorMix } from '@/utils/index'
 import {
   Check,
   Delete,
