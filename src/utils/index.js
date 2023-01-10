@@ -16,3 +16,12 @@ export const colorMix = (c1, c2, ratio) => {
   b = ('0' + (b || 0).toString(16)).slice(-2)
   return '#' + r + g + b
 }
+
+// 生成随机数组
+export const randomArray = (length, min, max) => {
+  let arr = []
+  for (let i = 0; i < length; i++) {
+    arr.push(Math.floor(Math.random() * (max - min + 1) + min))
+  }
+  return arr
+}
