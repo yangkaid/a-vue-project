@@ -4,18 +4,26 @@
     <div class="rect">响应式1</div>
     <div class="rect">响应式2</div>
     <div class="rect">响应式3</div>
-    <div class="rect">响应式4</div>
   </div>
+  <el-button type="primary" @click="handleClick">提交</el-button>
 </template>
-<script setup></script>
+<script setup>
+const handleClick = () => {
+  ElMessage({
+    type: "success",
+    message: "复制成功"
+  });
+}
+</script>
 <style lang='scss' scoped>
 .rect-content {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
+
 .rect {
-  flex-shrink: 1;
+  flex-grow: 1;
   min-width: 300px;
   height: 200px;
   background-color: var(--el-color-primary);
