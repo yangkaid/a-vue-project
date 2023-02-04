@@ -21,6 +21,8 @@
     "unplugin-auto-import": "^0.12.1",
     "unplugin-vue-components": "^0.22.12",
     "vite": "^4.0.0",
-    "vite-plugin-svg-icons": "^2.0.1"
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vite-plugin-windicss": "^1.8.10",
+    "windicss": "^3.5.6"
   }
 }

@@ -16,7 +16,6 @@ const directivesList = {
 const directives = {
 	install: function (app) {
 		Object.keys(directivesList).forEach(key => {
-      console.log(key);
 			// 注册所有自定义指令
 			app.directive(key, directivesList[key]);
 		});
