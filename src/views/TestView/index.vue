@@ -6,6 +6,7 @@
     <div class="rect">响应式3</div>
   </div>
   <el-button type="primary" @click="handleClick">提交</el-button>
+  <detail-card></detail-card>
 </template>
 <script setup>
 const handleClick = () => {

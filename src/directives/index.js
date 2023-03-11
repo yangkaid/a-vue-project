@@ -3,6 +3,7 @@ import copy from "./modules/copy";
 import debounce from './modules/debounce'
 import throttle from "./modules/throttle";
 import draggable from "./modules/draggable";
+import dom2png from "./modules/dom2png";
 
 const directivesList = {
 	// Custom directives
@@ -10,7 +11,8 @@ const directivesList = {
   copy,
   debounce,
   throttle,
-  draggable
+  draggable,
+  dom2png
 };
 
 const directives = {

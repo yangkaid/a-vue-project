@@ -21,6 +21,12 @@
     <div class="draggable">
       <div class="content" v-draggable>拖拽这个元素</div>
     </div>
+    <el-divider></el-divider>
+    <div class="dom2png">
+      <h3>DOM元素转图片</h3>
+      <div class="element" v-dom2png="screenshot">我是一个文字</div>
+      <el-button type="primary" @click="shootDown" class="mt-3">截图</el-button>
+    </div>
   </div>
 </template>
 <script setup>
@@ -32,23 +38,38 @@ const handelClick = () => {
     message: "点击按钮"
   });
 }
+const screenshot = ref(false)
+const shootDown = () => {
+  screenshot.value = !screenshot.value
+  console.log(screenshot.value)
+}
 </script>
 <style lang='scss' scoped>
 .common-directive {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 30px;
+
   .draggable {
     width: 100%;
     height: 200px;
     border: 1px solid var(--el-color-primary);
     position: relative;
+
     .content {
       width: 50px;
       height: 50px;
       background-color: var(--el-color-primary);
       text-align: middle;
     }
+  }
+
+  .element {
+    width: 200px;
+    height: 200px;
+    background-color: var(--el-color-primary);
+    color: red;
   }
 }
 </style>
