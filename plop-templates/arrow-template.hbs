@@ -1,8 +1,8 @@
 <template>
-  <div class="'BusinessRisk'">
-    <van-list v-model="loading" :finished="finished" @load="loadList">
+  <div class="'{{name}}'">
+    <arrow-list v-model="loading" :finished="finished" @load="loadList">
       <title-card v-for="(item, index) in list" :key="index" :cardData="item" :cardLabelMap="label"></title-card>
-    </van-list>
+    </arrow-list>
   </div>
 </template>
 <script setup>
@@ -15,10 +15,10 @@ const list = ref([])
 const loading = ref(false)
 const finished = ref(false)
 const label = computed({
-  return labelMap['BusinessRisk']
+  return labelMap['{{name}}']
 })
 const loadList = async () => {
-  const { data } = await axios.post('/api/business-risk', {
+  const { data } = await axios.post('{{api}}', {
       currentPage: currentPage.value,
       pageSize: pageSize.value
   })

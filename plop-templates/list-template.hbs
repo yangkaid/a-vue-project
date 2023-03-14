@@ -7,14 +7,14 @@
 </template>
 <script setup>
 import axios from 'axios'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import labelMap from './data/index'
 const currentPage = ref(1)
 const pageSize = ref(10)
 const list = ref([])
 const loading = ref(false)
 const finished = ref(false)
-const label = computed({
+const label = computed(() => {
   return labelMap['{{name}}']
 })
 const loadList = async () => {
