@@ -1,53 +1,40 @@
 <template>
-  <div class="'BusinessInfo'">
-    <!-- <van-list v-model="loading" :finished="finished" @load="loadList">
-      <detail-card v-for="(item, index) in list" :key="index" :cardData="item" :cardLabelMap="label"></detail-card>
-    </van-list> -->
-    <detail-card></detail-card>
+  <div class="BusinessInfo">
+    <van-list v-model:loading="loading" :finished="finished" @load="loadList" finished-text="没有更多了">
+      <detail-card v-for="(item, index) in list" :key="index" :cardData="item" :label="label" :title="item.title">
+      </detail-card>
+    </van-list>
   </div>
 </template>
 <script setup>
 import axios from 'axios'
 import { ref, computed } from 'vue'
-// import labelMap from './data/index'
+import labelMap from './data/index'
+import DetailCard from '../../components/DetailCard.vue';
 const currentPage = ref(1)
 const pageSize = ref(10)
+const list = ref([])
 const loading = ref(false)
 const finished = ref(false)
-const list = ref([
-  {
-    name: '张三',
-    address: '厦门市',
-    phone: '12313',
-    email: '123123',
-    website: 'www.baidu.com'
-  },
-  {
-    name: '张三',
-    address: '厦门市',
-    phone: '12313',
-    email: '123123',
-    website: 'www.baidu.com'
-  }
-])
-const labelMap = ref({
-  name: '姓名',
-  address: '地址',
-  phone: '手机',
-  email: '邮箱',
-  website: '网址',
+const label = computed(() => {
+  return labelMap['BusinessInfo']
 })
-// const label = computed(() => labelMap['BusinessInfo'])
 const loadList = async () => {
-  const { data } = await axios.post('/api/fetch', {
+  const { data } = await axios.post('/mock/get-business-list', {
     currentPage: currentPage.value,
     pageSize: pageSize.value
   })
-  if (data.length < pageSize.value) {
+  if (currentPage.value >= data.allPages) {
     finished.value = true
   }
-  list.value = list.value.concat(data)
+  list.value.push(...data.data)
   currentPage.value++
   loading.value = false
 }
 </script>
+<style lang="scss" scoped>
+.BusinessInfo {
+  width: 100%;
+  height: 500px;
+}
+</style>

@@ -14,16 +14,19 @@
     "echarts": "^5.4.1",
     "element-plus": "^2.2.26",
     "pinia": "^2.0.28",
+    "vant": "^4.1.2",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "mockjs": "^1.1.0",
     "plop": "^3.1.2",
     "sass": "^1.56.2",
     "unplugin-auto-import": "^0.12.1",
     "unplugin-vue-components": "^0.22.12",
     "vite": "^4.0.0",
+    "vite-plugin-mock": "^2.9.6",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-windicss": "^1.8.10",
     "windicss": "^3.5.6"

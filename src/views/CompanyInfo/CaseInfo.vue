@@ -1,7 +1,7 @@
 <template>
-  <div class="{{name}}">
+  <div class="CaseInfo">
     <van-list v-model="loading" :finished="finished" @load="loadList" finished-text="没有更多了">
-      <detail-card v-for="(item, index) in list" :key="index" :cardData="item" :label="label" :title="item.title"></detail-card>
+      <detail-card v-for="(item, index) in list" :key="index" :cardData="item" :title="item.title" :label="label"></detail-card>
     </van-list>
   </div>
 </template>
@@ -15,10 +15,10 @@ const list = ref([])
 const loading = ref(false)
 const finished = ref(false)
 const label = computed(() => {
-  return labelMap['{{name}}']
+  return labelMap['CaseInfo']
 })
 const loadList = async () => {
-  const { data } = await axios.post('{{api}}', {
+  const { data } = await axios.post('/mock/get-case-list', {
       currentPage: currentPage.value,
       pageSize: pageSize.value
   })
