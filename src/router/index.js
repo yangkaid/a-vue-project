@@ -31,9 +31,14 @@ const router = createRouter({
       redirect: "/themeview"
     },
     {
-            path: '/business-info',
-            name: 'BusinessInfo',
-            component: () => import('@/views/CompanyInfo/BusinessInfo.vue')
+      path: '/business-info',
+      name: 'BusinessInfo',
+      component: () => import('@/views/CompanyInfo/BusinessInfo.vue')
+    },
+  {
+            path: '/case-info',
+            name: 'CaseInfo',
+            component: () => import('@/views/CompanyInfo/CaseInfo.vue')
           },
   {
             path: '/case-info',
@@ -41,7 +46,7 @@ const router = createRouter({
             component: () => import('@/views/CompanyInfo/CaseInfo.vue')
           },
   // plop:route:insert
-    
+
     ...dynamicRoutes,
     {
       path: "/:pathMatch(.*)*",

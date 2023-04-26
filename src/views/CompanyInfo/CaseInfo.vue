@@ -1,7 +1,7 @@
 <template>
   <div class="CaseInfo">
     <van-list v-model="loading" :finished="finished" @load="loadList" finished-text="没有更多了">
-      <detail-card v-for="(item, index) in list" :key="index" :cardData="item" :title="item.title" :label="label"></detail-card>
+      <detail-card v-for="(item, index) in list" :key="index" :cardData="item" :label="label" :title="item.title"></detail-card>
     </van-list>
   </div>
 </template>

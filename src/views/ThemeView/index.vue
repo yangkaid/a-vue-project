@@ -49,6 +49,10 @@
     <div class="rect"></div>
     <el-color-picker v-model="color" @active-change="changeColor" />
   </el-row>
+  <el-row class="mb-4">
+    <hello-world :msg="1231231"></hello-world>
+    <about-view></about-view>
+  </el-row>
 </template>
 
 <script setup>

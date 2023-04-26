@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -8,6 +7,7 @@ import { ElementPlusResolver, VantResolver } from 'unplugin-vue-components/resol
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import WindiCss from 'vite-plugin-windicss'
 import { viteMockServe } from 'vite-plugin-mock'
+import federation from '@originjs/vite-plugin-federation'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -33,6 +33,19 @@ export default defineConfig({
     viteMockServe({
       mockPath: 'mock',
       localEnabled: true
+    }),
+    federation({
+      name: 'remote-app',
+      filename: 'remoteEntry.js',
+      remotes: {
+        'main-app': 'http://127.0.0.1:4173/remoteEntry.js'
+      },
+      exposes: {
+        './vue3': './node_modules/vue/index.js',
+        './Example': './src/views/RemoteView/ExampleView.vue',
+        './Theme': './src/views/ThemeView/index.vue',
+        './Chart': './src/views/ChartsView/LineChart/index.vue',
+      }
     })
   ],
   resolve: {
@@ -46,5 +59,17 @@ export default defineConfig({
         additionalData: `@use "./src/style/element.scss" as *;`,
       }
     }
-  }
+  },
+  build: {
+    target: 'esnext',
+    minify: false,
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        format: 'esm',
+        entryFileNames: 'assets/[name].js',
+        minifyInternalExports: false,
+      },
+    },
+  },
 })

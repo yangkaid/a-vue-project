@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@element-plus/icons-vue': ^2.0.10
+  '@originjs/vite-plugin-federation': ^1.2.2
   '@vitejs/plugin-vue': ^4.0.0
   axios: ^1.3.4
   echarts: ^5.4.1
@@ -32,6 +33,7 @@ dependencies:
   vue-router: 4.1.6_vue@3.2.45
 
 devDependencies:
+  '@originjs/vite-plugin-federation': 1.2.2
   '@vitejs/plugin-vue': 4.0.0_vite@4.0.1+vue@3.2.45
   mockjs: 1.1.0
   plop: 3.1.2
@@ -317,6 +319,14 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.14.0
+    dev: true
+
+  /@originjs/vite-plugin-federation/1.2.2:
+    resolution: {integrity: sha512-XrK782lOdReKjvoeu3xw0q4M4xJpKwcFbDfiLauX0DJf/hwcP3zQ9z83bSIpJglAwrH5ezo+bZfl2/ueWItJfw==}
+    engines: {node: '>=14.0.0', pnpm: '>=7.0.1'}
+    dependencies:
+      estree-walker: 3.0.3
+      magic-string: 0.27.0
     dev: true
 
   /@rollup/plugin-node-resolve/13.3.0:
@@ -1323,6 +1333,12 @@ packages:
 
   /estree-walker/2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
+
+  /estree-walker/3.0.3:
+    resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
+    dependencies:
+      '@types/estree': 1.0.0
+    dev: true
 
   /etag/1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}

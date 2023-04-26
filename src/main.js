@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, defineAsyncComponent } from 'vue'
 import App from './App.vue'
 import router from './router'
 import components from './components/index'
@@ -14,5 +14,9 @@ const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
+const HelloWorld = defineAsyncComponent(() => import('main-app/HelloWorld'))
+const AboutView = defineAsyncComponent(() => import('main-app/AboutView'))
+app.component('hello-world', HelloWorld)
+app.component('about-view', AboutView)
 app.use(router).use(directives).use(components)
 app.mount('#app')
