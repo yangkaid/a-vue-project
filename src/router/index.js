@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 const dynamicRoutes = []
 // 引入 views 文件夹下所有 vue 文件
-const modules = import.meta.glob("@/views/**/*.vue");
+const modules = import.meta.glob("@/views/**/index.vue");
 // views文件夹下的白名单
 const whiteList = ['companyinfo']
 // 获取views文件夹下的组件名称
@@ -13,7 +13,6 @@ const getComponentName = (path) => {
 Object.keys(modules).forEach(path => {
   let name = getComponentName(path)
   if (!whiteList.includes(name)) {
-    console.log('路由名称', name);
     let routeItem = {
       path: `/${name}`,
       name: name,
@@ -35,17 +34,17 @@ const router = createRouter({
       name: 'BusinessInfo',
       component: () => import('@/views/CompanyInfo/BusinessInfo.vue')
     },
-  {
-            path: '/case-info',
-            name: 'CaseInfo',
-            component: () => import('@/views/CompanyInfo/CaseInfo.vue')
-          },
-  {
-            path: '/case-info',
-            name: 'CaseInfo',
-            component: () => import('@/views/CompanyInfo/CaseInfo.vue')
-          },
-  // plop:route:insert
+    {
+      path: '/case-info',
+      name: 'CaseInfo',
+      component: () => import('@/views/CompanyInfo/CaseInfo.vue')
+    },
+    {
+      path: '/case-info',
+      name: 'CaseInfo',
+      component: () => import('@/views/CompanyInfo/CaseInfo.vue')
+    },
+    // plop:route:insert
 
     ...dynamicRoutes,
     {

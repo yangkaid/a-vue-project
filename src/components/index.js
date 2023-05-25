@@ -4,7 +4,7 @@ const componentModules = import.meta.globEager('./*.vue')
 const components = {
    install(app) {
     for (const [key, component] of Object.entries(componentModules)) {
-      app.component(component.default.name, component.default)
+      app.component(component.default.__name, component.default)
     }
   }
 

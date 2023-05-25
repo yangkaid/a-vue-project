@@ -14,9 +14,5 @@ const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
-const HelloWorld = defineAsyncComponent(() => import('main-app/HelloWorld'))
-const AboutView = defineAsyncComponent(() => import('main-app/AboutView'))
-app.component('hello-world', HelloWorld)
-app.component('about-view', AboutView)
 app.use(router).use(directives).use(components)
 app.mount('#app')

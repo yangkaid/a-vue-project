@@ -8,10 +8,12 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import WindiCss from 'vite-plugin-windicss'
 import { viteMockServe } from 'vite-plugin-mock'
 import federation from '@originjs/vite-plugin-federation'
+// import vitePluginVue3ToVue2 from './vite-plugin-vue3-to-vue2'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    // vitePluginVue3ToVue2(),
     vue(),
     Components({
       resolvers: [
@@ -37,9 +39,6 @@ export default defineConfig({
     federation({
       name: 'remote-app',
       filename: 'remoteEntry.js',
-      remotes: {
-        'main-app': 'http://127.0.0.1:4173/remoteEntry.js'
-      },
       exposes: {
         './vue3': './node_modules/vue/index.js',
         './Example': './src/views/RemoteView/ExampleView.vue',

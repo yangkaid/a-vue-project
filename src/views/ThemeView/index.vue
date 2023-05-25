@@ -1,7 +1,7 @@
 <template>
   <el-row class="mb-4">
     <el-button>Default</el-button>
-    <el-button type="primary">Primary</el-button>
+    <el-button type="primary" :icon="Plus">Primary</el-button>
     <el-button type="success">Success</el-button>
     <el-button type="info">Info</el-button>
     <el-button type="warning">Warning</el-button>
@@ -50,9 +50,9 @@
     <el-color-picker v-model="color" @active-change="changeColor" />
   </el-row>
   <el-row class="mb-4">
-    <hello-world :msg="1231231"></hello-world>
-    <about-view></about-view>
+    <el-button type="primary" @click="handleOpen">打开弹窗</el-button>
   </el-row>
+  <CustomDialog v-model:dialogVisible="visible"></CustomDialog>
 </template>
 
 <script setup>
@@ -65,7 +65,9 @@ import {
   Message,
   Search,
   Star,
+  Plus
 } from '@element-plus/icons-vue'
+import CustomDialog from './components/CustomDialog.vue';
 const checked1 = ref(false)
 const checked2 = ref(false)
 const input = ref(123)
@@ -84,6 +86,11 @@ const changeColor = (value => {
   setCssvar('--el-color-primary-light-9', colorMix(value, '#ffffff', 0.9))
   setCssvar('--el-color-primary-dark-2', colorMix(value, '#000000', 0.2))
 })
+const visible = ref(false)
+const handleOpen = () => {
+  visible.value = true
+}
+
 
 </script>
 
