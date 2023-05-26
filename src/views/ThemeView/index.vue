@@ -51,8 +51,8 @@
   </el-row>
   <el-row class="mb-4">
     <el-button type="primary" @click="handleOpen">打开弹窗</el-button>
+    <CustomDialog v-model:dialogVisible="visible"></CustomDialog>
   </el-row>
-  <CustomDialog v-model:dialogVisible="visible"></CustomDialog>
 </template>
 
 <script setup>
