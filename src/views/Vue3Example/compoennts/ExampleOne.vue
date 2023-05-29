@@ -1,45 +1,50 @@
 
 <template>
-  <el-row>
-    <div class="mr-5">{{ msg }}</div>
-    <div class="mr-5" v-for="item in msgArr"> {{ item }}</div>
-    <div class="mr-5" v-for="item in memberList">{{ item.name }} -- {{ item.id }}</div>
-    <div class="mr-5" v-for="item in list">
-      <span>姓名:{{ item.name }}</span>
-      <span> 年龄: {{ item.age }}</span>
-      <span>分数: {{ item.score }}</span>
-      <span>性别: {{ item.sex || '-' }}</span>
-    </div>
-  </el-row>
-  <el-row class="mt-5">
-    <el-button @click="change" type="primary">改变</el-button>
-    <el-button @click="reset">重置</el-button>
-    <el-button @click="changeReactive" type="primary">改变reactive</el-button>
-    <el-button @click="resetReactive">重置reactive</el-button>
-  </el-row>
-  <el-row class="mt-5">
-    <div ref="msgdom">123123</div>
-  </el-row>
-  <el-row class="mt-5">
-    <!-- <ul>
-      <li v-for="(todo, index) in todos">
-        <el-input type="text" v-model="todo.text"></el-input>
-        <el-button size="small" @click="deleteTodos(index)">删除</el-button>
-      </li>
-    </ul> -->
-    <ul>
-      <li v-for="(item, index) in todos">
-        {{ item.id }}
-        <input type="text" :placeholder="item.text">
-        <button @click="deleteTodos(index)">删除</button>
-      </li>
-    </ul>
-  </el-row>
-  <el-divider></el-divider>
+  <div>
+    <el-row>
+      <div class="mr-5">{{ msg }}</div>
+      <div class="mr-5" v-for="item in msgArr"> {{ item }}</div>
+      <div class="mr-5" v-for="item in memberList">{{ item.name }} -- {{ item.id }}</div>
+      <div class="mr-5" v-for="item in list">
+        <span>姓名:{{ item.name }}</span>
+        <span> 年龄: {{ item.age }}</span>
+        <span>分数: {{ item.score }}</span>
+        <span>性别: {{ item.sex || '-' }}</span>
+      </div>
+    </el-row>
+    <el-row class="mt-5">
+      <el-button @click="change" type="primary">改变</el-button>
+      <el-button @click="reset">重置</el-button>
+      <el-button @click="changeReactive" type="primary">改变reactive</el-button>
+      <el-button @click="resetReactive">重置reactive</el-button>
+    </el-row>
+    <el-row class="mt-5">
+      <div ref="msgdom">123123</div>
+    </el-row>
+    <el-row class="mt-5">
+      <ul>
+        <li v-for="(item, index) in todos" :key="item.id">
+          {{ item.id }}
+          <input type="text" />
+          <button @click="deleteTodos(index)">删除</button>
+        </li>
+      </ul>
+      <button @click="addItem">在index为1处增加一项</button>
+    </el-row>
+    <el-row class="mt-5">
+      <div>生命周期</div>
+      <el-button id="count" @click="count++">{{ count + 1 }}</el-button>
+      <div>{{ count }}</div>
+    </el-row>
+    <el-row class="mt-5">
+      <my-component :text="'helloworld'" ref="component"></my-component>
+    </el-row>
+    <el-divider></el-divider>
+  </div>
 </template>
 <script lang="ts" setup>
-import { reactive, ref, toRefs, toRef, onMounted, isRef, unref, toRaw } from 'vue';
-
+import { reactive, ref, toRefs, toRef, onMounted, isRef, unref, toRaw, onUpdated } from 'vue';
+import MyComponent from './MyComponent.vue';
 const msg = ref<string>('hello world')
 const msgArr = ['hhh', 'bbb', 'ccc']
 interface Member {
@@ -95,7 +100,7 @@ function changeReactive() {
   list[0].name = 'gaibian'
   list[0].sex = true
   // name失去响应
-  let  { name } = list[1]
+  let { name } = list[1]
   console.log(name)
   name = '我变了'
   let score = toRef(list[0], 'score')
@@ -116,7 +121,10 @@ function resetReactive() {
 }
 const msgdom = ref<HTMLElement>()
 onMounted(() => {
-  console.log(msgdom.value)
+  // console.log(msgdom.value)
+  console.log(component, 'component')
+  console.log(component.value.msg)
+  component.value.msg = '112312312312'
 })
 let todos = reactive([
   {
@@ -137,7 +145,15 @@ function deleteTodos(index: any) {
   todos.splice(index, 1)
   console.log(todos)
 }
+function addItem() {
+  todos.splice(1, 0, { text: 'SAMSUNG', id: 15 })
+}
+// 生命周期
+const count = ref(0)
+onUpdated(() => {
+  console.log(document.getElementById('count')?.textContent)
+})
+const component = ref<InstanceType<typeof MyComponent>>()
 </script>
 <style lang='scss' scoped>
-.example {}
 </style>
