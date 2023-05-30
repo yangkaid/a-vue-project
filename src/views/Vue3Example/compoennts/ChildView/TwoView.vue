@@ -30,6 +30,10 @@ const tableConfig = [
     label: '实控人'
   },
   {
+    prop: 'businessStatus',
+    label: '状态'
+  },
+  {
     prop: 'registCapi',
     label: '注册资本'
   },
@@ -60,6 +64,7 @@ const tableConfig = [
         <el-table-column v-else :prop="item.prop" :label="item.label"></el-table-column>
       </template>
     </el-table>
+    <el-pagination class="mt-4" background layout="->, total, sizes, prev, pager, next" :total="1000" :page-sizes="[5,10,20]"></el-pagination>
   </div>
 </template>
 <style lang='scss' scoped>

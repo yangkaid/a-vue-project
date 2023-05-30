@@ -26,13 +26,18 @@
         <div v-for="i in 4" :key="i">{{ 'List item' + i }}</div>
       </el-card>
     </div>
+    <div class="mt-5">
+      <span>store {{ count }}</span>
+    </div>
     <el-divider></el-divider>
   </div>
 </template>
 <script lang="ts" setup>
 import axios from 'axios';
 import { computed, reactive, ref, watch } from 'vue';
-
+import { useMainStore } from '@/stores';
+const mainStore = useMainStore()
+let count = computed(() => mainStore.count)
 const authors = reactive({
   name: 'yangkai',
   books: [

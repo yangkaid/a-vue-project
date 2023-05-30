@@ -1,3 +1,4 @@
+import { Random } from "mockjs"
 export default [
   {
     url: '/mock/get-business-list',
@@ -84,123 +85,28 @@ export default [
   {
     url: '/mock/get-company-info',
     method: 'post',
-    response: () => {
+    response: ({ body }) => {
+      const { pageSize, currentPage } = body
+      let arr = []
+      for(let i = 0; i < 50; i++) {
+        let mockData = {
+          businessStatus: Random.ctitle(4),
+          investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
+          isHistory: "0",
+          name: Random.ctitle(),
+          operName: Random.cname(),
+          registCapi: `${Random.float(0, 1000, 2, 2)}万元人名币`,
+          shouldCapiConv: `${Random.float(0, 1000, 2, 2)}万元人名币`,
+          startDate: Random.date(),
+          stockPercent: `${Random.float(0, 100, 2, 2)}%`,
+        }
+        arr.push(mockData)
+      }
       return {
         code: 200,
         message: '成功',
         allPages: 1,
-        rows: [
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-          {
-            businessStatus: "存续（在营、开业、在册）",
-            investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
-            isHistory: "0",
-            name: "深圳市超极饰科技有限公司",
-            operName: "罗辉德",
-            registCapi: "3417.96568万元人民币",
-            shouldCapiConv: "97.164179万元人名币",
-            startDate: "2020-10-12",
-            stockPercent: "2.84%",
-          },
-        ]
+        rows: arr.slice((currentPage - 1) * pageSize, currentPage * pageSize)
       }
     }
   }

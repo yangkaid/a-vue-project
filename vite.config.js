@@ -71,14 +71,4 @@ export default defineConfig({
       },
     },
   },
-  server: {
-    cors: true,
-    proxy: {
-      '/api': {
-        target: 'http://ty-k8s-api.ssg-sit.qixin007.com/api/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      }
-    }
-  }
 })

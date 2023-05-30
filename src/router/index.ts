@@ -1,22 +1,22 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-const dynamicRoutes = []
+import { RouteRecord, RouteRecordNormalized } from "vue-router";
+const dynamicRoutes: RouteRecord[] = []
 // 引入 views 文件夹下所有 vue 文件
 const modules = import.meta.glob("@/views/**/index.vue");
 // views文件夹下的白名单
 const whiteList = ['companyinfo']
 // 获取views文件夹下的组件名称
-const getComponentName = (path) => {
+const getComponentName = (path: string) => {
   let pathArr = path.split('/')
   return pathArr[pathArr.length - 2].toLowerCase()
 }
-
 Object.keys(modules).forEach(path => {
   let name = getComponentName(path)
   if (!whiteList.includes(name)) {
-    let routeItem = {
+    let routeItem: RouteRecordNormalized = {
       path: `/${name}`,
       name: name,
-      component: modules[path]
+      component: modules[path],
     }
     dynamicRoutes.push(routeItem)
   }

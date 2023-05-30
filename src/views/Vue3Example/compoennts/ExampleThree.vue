@@ -3,9 +3,11 @@ import axios from 'axios';
 import { reactive, ref } from 'vue'
 import ChildView from './ChildView/ChildView.vue';
 import TwoView from './ChildView/TwoView.vue'
+import ThreeView from './ChildView/ThreeView.vue';
 interface Member {
-  id: number,
-  name: string
+  id: number | string,
+  name: string,
+  age?: number,
 }
 const userInfo = reactive<Member>({
   id: 1,
@@ -18,8 +20,9 @@ function update(name: string) {
 let infoList = ref([])
 async function getCompanyInfo() {
   try {
-    let res = await axios.post('/enterprise/basic/list-invest-abroad-page', {
-      eid: '534472fd-7d53-4958-8132-d6a6242423d8'
+    let res = await axios.post('/mock/get-company-info', {
+      currentPage: 1,
+      pageSize: 10
     })
     console.log(res)
     infoList.value = res.data.rows
@@ -27,7 +30,15 @@ async function getCompanyInfo() {
     console.log(error)
   }
 }
-getCompanyInfo()
+setTimeout(() => {
+  getCompanyInfo()
+}, 4000);
+// 组件三
+const threeUserInfo = reactive<Member>({
+  id: '123123',
+  name: '小明',
+  age: 24
+})
 </script>
 <template>
   <div>
@@ -39,6 +50,11 @@ getCompanyInfo()
     <div>接口请求并传值</div>
     <div>父组件</div>
     <two-view :info-list="infoList"></two-view>
+    <el-divider></el-divider>
+    <div>v-model父子组件传值</div>
+    {{ threeUserInfo }}
+    <three-view v-model:uid="threeUserInfo.id" v-model:username="threeUserInfo.name"
+      v-model:age="threeUserInfo.age"></three-view>
   </div>
 </template>
 <style lang='scss' scoped>

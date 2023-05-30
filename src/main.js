@@ -10,9 +10,10 @@ import 'virtual:svg-icons-register'
 import 'virtual:windi.css'
 // 自定义指令
 import directives from './directives'
+import { createPinia } from 'pinia'
 const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
-app.use(router).use(directives).use(components)
+app.use(router).use(directives).use(components).use(createPinia())
 app.mount('#app')
