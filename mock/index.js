@@ -105,7 +105,7 @@ export default [
       return {
         code: 200,
         message: '成功',
-        allPages: 1,
+        total: arr.length,
         rows: arr.slice((currentPage - 1) * pageSize, currentPage * pageSize)
       }
     }
