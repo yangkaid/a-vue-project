@@ -4,15 +4,15 @@ import MouseExample from './components/MouseExample.vue';
 import TableComp from './components/TableComp.vue'
 const tabList = [
   {
-    text: '鼠标跟踪器',
-    name: 'MouseExample'
-  },
-  {
     text: '表格封装',
     name: 'TableComp'
+  },
+  {
+    text: '鼠标跟踪器',
+    name: 'MouseExample'
   }
 ]
-const activeTab = ref('MouseExample')
+const activeTab = ref('TableComp')
 const Components: any = {
   'MouseExample': MouseExample,
   'TableComp': TableComp
