@@ -48,7 +48,7 @@ const { tableData, loading, total, currentPage, pageSize } = useTable('/mock/get
 </script>
 <template>
   <div>
-    <el-table :data="tableData" border v-loading="loading" max-height="600px">
+    <el-table :data="tableData" border stripe v-loading="loading" max-height="600px">
       <template v-for="item in tableConfig" :key="item.label">
         <el-table-column v-if="item.prop === 'isHistory'" :prop="item.prop" :label="item.label">
           <template #default="{ row }">

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import MouseExample from './components/MouseExample.vue';
 import TableComp from './components/TableComp.vue'
+import VueUseExample from './components/VueUseExample.vue';
 const tabList = [
   {
     text: '表格封装',
@@ -10,12 +11,17 @@ const tabList = [
   {
     text: '鼠标跟踪器',
     name: 'MouseExample'
+  },
+  {
+    text: 'VueUse',
+    name: 'VueuseExample'
   }
 ]
 const activeTab = ref('TableComp')
 const Components: any = {
   'MouseExample': MouseExample,
-  'TableComp': TableComp
+  'TableComp': TableComp,
+  'VueuseExample': VueUseExample
 }
 </script>
 <template>
