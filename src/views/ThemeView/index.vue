@@ -53,11 +53,16 @@
     <el-button type="primary" @click="handleOpen">打开弹窗</el-button>
     <CustomDialog v-model:dialogVisible="visible"></CustomDialog>
   </el-row>
+  <el-row class="mb-4">
+    <ImgCutter @cutDown="cutDown"></ImgCutter>
+    <el-button type="primary" @click="changeFormData">改变</el-button>
+  </el-row>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { colorMix } from '@/utils/index'
+import ImgCutter from 'vue-img-cutter'
 import {
   Check,
   Delete,
@@ -90,14 +95,26 @@ const visible = ref(false)
 const handleOpen = () => {
   visible.value = true
 }
-
-
+const cutDown = (event) => {
+  console.log(event)
+  let data = new FormData()
+  data.append('file', event.file)
+  data.append("name", "张三");
+  console.log(data.get('file'), 'data')
+}
+function changeFormData() {
+  var formData = new FormData(); // Currently empty
+  formData.append('username', 'Chris');
+  formData.append('userpic', 'hahahah');
+  console.log(formData.get('username'))
+}
 </script>
 
 <style lang="scss" scoped>
 .mb-4 {
   margin-bottom: 40px;
 }
+
 .rect {
   width: 100px;
   height: 100px;
