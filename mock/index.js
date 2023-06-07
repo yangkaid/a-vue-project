@@ -91,7 +91,7 @@ export default [
       for(let i = 0; i < 50; i++) {
         let mockData = {
           businessStatus: Random.ctitle(4),
-          investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a",
+          investEid: "8f67f5c0-11df-4935-b18a-fc25f9c5299a" + Random.integer(0, 1000),
           isHistory: "0",
           name: Random.ctitle(),
           operName: Random.cname(),

@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { useTable } from '@/hooks/useTable';
-import axios from 'axios';
-function getTableData(data: any) {
-  return axios({
-    url: '/mock/get-company-info',
-    method: 'post',
-    data
-  })
-}
+// import axios from 'axios';
+// function getTableData(data: any) {
+//   return axios({
+//     url: '/mock/get-company-info',
+//     method: 'post',
+//     data
+//   })
+// }
 const tableConfig = [
   {
     prop: 'name',
@@ -48,14 +48,15 @@ const { tableData, loading, total, currentPage, pageSize } = useTable('/mock/get
 </script>
 <template>
   <div>
-    <el-table :data="tableData" border stripe v-loading="loading" max-height="600px">
+    <el-table :data="tableData" border stripe v-loading="loading" max-height="600px" :row-key="'name'">
+      <el-table-column type="selection" :reserve-selection="true"></el-table-column>
       <template v-for="item in tableConfig" :key="item.label">
         <el-table-column v-if="item.prop === 'isHistory'" :prop="item.prop" :label="item.label">
           <template #default="{ row }">
             <span>{{ +row[item.prop] === 0 ? '否' : '是' }}</span>
           </template>
         </el-table-column>
-        <el-table-column v-else :prop="item.prop" :label="item.label"></el-table-column>
+        <el-table-column v-else :prop="item.prop" :label="item.label" show-overflow-tooltip></el-table-column>
       </template>
     </el-table>
     <el-pagination class="mt-4" background layout="->, total, sizes, prev, pager, next" :total="total"
