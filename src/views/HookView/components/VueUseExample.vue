@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { useStorage, useDraggable } from '@vueuse/core'
+// import { useStorage, useDraggable } from '@vueuse/core'
 import { ref } from 'vue';
-import { useTitle, useVModel } from '@/hooks/useTitle'
+import { useTitle } from '@/hooks/useTitle'
+import { useStorage } from '@/hooks/useStorage';
 import ChildView from './ChildView.vue'
 // useStorage
 const theDefault = {
@@ -13,14 +14,14 @@ const theDefault = {
 const state = useStorage('local-storage', theDefault)
 const text1 = localStorage.getItem('local-storage')
 // useDraggable
-const el = ref<HTMLElement | null>(null)
-const { x, y, style } = useDraggable(el, {
-  initialValue: { x: 580, y: 140 }
-})
+// const el = ref<HTMLElement | null>(null)
+// const { x, y, style } = useDraggable(el, {
+//   initialValue: { x: 580, y: 140 }
+// })
 // useTitle
 const title = useTitle()
 console.log(title.value)
-const changeTitle = (value) => {
+const changeTitle = (value: string) => {
   title.value = value
 }
 // useVModel

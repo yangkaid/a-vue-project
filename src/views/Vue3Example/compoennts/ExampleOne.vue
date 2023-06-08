@@ -120,12 +120,12 @@ function resetReactive() {
   })
 }
 const msgdom = ref<HTMLElement>()
-onMounted(() => {
-  // console.log(msgdom.value)
-  console.log(component, 'component')
-  console.log(component.value.msg)
-  component.value.msg = '112312312312'
-})
+// onMounted(() => {
+//   // console.log(msgdom.value)
+//   console.log(component, 'component')
+//   console.log(component.value.msg)
+//   component.value.msg = '112312312312'
+// })
 let todos = reactive([
   {
     text: 'learn',

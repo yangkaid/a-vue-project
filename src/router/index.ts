@@ -13,7 +13,7 @@ const getComponentName = (path: string) => {
 Object.keys(modules).forEach(path => {
   let name = getComponentName(path)
   if (!whiteList.includes(name)) {
-    let routeItem: RouteRecordNormalized = {
+    let routeItem: RouteRecordNormalized | any = {
       path: `/${name}`,
       name: name,
       component: modules[path],

@@ -40,7 +40,7 @@ export default defineConfig({
       name: 'remote-app',
       filename: 'remoteEntry.js',
       exposes: {
-        './vue3': './node_modules/vue/index.js',
+        // './vue3': './node_modules/vue/index.js',
         './Example': './src/views/RemoteView/ExampleView.vue',
         './Theme': './src/views/ThemeView/index.vue',
         './Chart': './src/views/ChartsView/LineChart/index.vue',

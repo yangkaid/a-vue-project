@@ -85,7 +85,7 @@ interface Person {
   desc: string,
   obj: object
 }
-let person = reactive<Person>({
+let person = reactive({
   name: 'yangkai',
   age: 16,
   desc: 'hahahaha',

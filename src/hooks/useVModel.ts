@@ -10,8 +10,9 @@ export function useVModel(props: any, name: string): Ref<any> {
       return props[name];
     },
      set(val) {
-      console.log(val, 'val')
-      emit(`update:${name}`, val);
+      if (emit) {
+        emit(`update:${name}`, val);
+      }
      }
   })
 }
