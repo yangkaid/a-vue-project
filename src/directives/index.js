@@ -4,6 +4,7 @@ import debounce from './modules/debounce'
 import throttle from "./modules/throttle";
 import draggable from "./modules/draggable";
 import dom2png from "./modules/dom2png";
+import clickOutside from "./modules/clickOutside";
 
 const directivesList = {
 	// Custom directives
@@ -12,7 +13,8 @@ const directivesList = {
   debounce,
   throttle,
   draggable,
-  dom2png
+  dom2png,
+  clickOutside
 };
 
 const directives = {

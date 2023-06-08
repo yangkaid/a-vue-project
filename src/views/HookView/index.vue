@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import MouseExample from './components/MouseExample.vue';
 import TableComp from './components/TableComp.vue'
 import VueUseExample from './components/VueUseExample.vue';
-import NotionExample from './components/NotionExample.vue'
+import ClickOutside from './components/ClickOutside.vue';
 const tabList = [
   {
     text: '表格封装',
@@ -18,8 +18,8 @@ const tabList = [
     name: 'VueuseExample'
   },
   {
-    text: 'Notion接口',
-    name: 'NotionExample'
+    text: 'ClickOutside',
+    name: 'ClickOutside'
   }
 ]
 const activeTab = ref('TableComp')
@@ -27,7 +27,7 @@ const Components: any = {
   'MouseExample': MouseExample,
   'TableComp': TableComp,
   'VueuseExample': VueUseExample,
-  'NotionExample': NotionExample
+  'ClickOutside': ClickOutside
 }
 </script>
 <template>
