@@ -1,3 +1,4 @@
+import { ref, watch } from 'vue'
 export function useStorage(key, defaultValue, options = {}) {
   const {
     shallow = false,
