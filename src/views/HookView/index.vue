@@ -7,19 +7,23 @@ import ClickOutside from './components/ClickOutside.vue';
 const tabList = [
   {
     text: '表格封装',
-    name: 'TableComp'
+    name: 'TableComp',
+    keepAlive: true
   },
   {
     text: '鼠标跟踪器',
-    name: 'MouseExample'
+    name: 'MouseExample',
+    keepAlive: false
   },
   {
     text: 'VueUse',
-    name: 'VueuseExample'
+    name: 'VueuseExample',
+    keepAlive: true
   },
   {
     text: 'ClickOutside',
-    name: 'ClickOutside'
+    name: 'ClickOutside',
+    keepAlive: false
   }
 ]
 const activeTab = ref('TableComp')
@@ -29,6 +33,7 @@ const Components: any = {
   'VueuseExample': VueUseExample,
   'ClickOutside': ClickOutside
 }
+const keepAliveList = tabList.filter(item => item.keepAlive).map(item => item.name)
 </script>
 <template>
   <div class="p-10">
@@ -36,7 +41,7 @@ const Components: any = {
       <el-tab-pane v-for="item in tabList" :key="item.name" :label="item.text" :name="item.name"></el-tab-pane>
     </el-tabs>
     <Transition name="fade" mode="out-in">
-      <keep-alive>
+      <keep-alive :include="keepAliveList">
         <component :is="Components[activeTab]"></component>
       </keep-alive>
     </Transition>
