@@ -8,6 +8,7 @@
   <el-button type="primary" @click="handleClick">提交</el-button>
   <van-button type="primary">vant按钮</van-button>
   <DetailCard title="标题" :cardData="cardData" :label="label"></DetailCard>
+  <collapse-pannel></collapse-pannel>
 </template>
 <script setup>
 import axios from 'axios'

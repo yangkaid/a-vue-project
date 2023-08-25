@@ -46,7 +46,7 @@ export default defineConfig(({ mode, command }) => {
           './Theme': './src/views/ThemeView/index.vue',
           './Chart': './src/views/ChartsView/LineChart/index.vue',
         }
-      })
+      }),
     ],
     resolve: {
       alias: {

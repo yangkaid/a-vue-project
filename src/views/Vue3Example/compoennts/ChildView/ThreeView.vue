@@ -12,6 +12,7 @@ const props =withDefaults(defineProps<Props>(), {
   age: 0,
   uid: 1111
 })
+console.log(props)
 const emits = defineEmits(['update:age'])
 let grandMsg : Ref<string> | undefined = inject<Ref<string>>('grandMsg')
 // console.log(grandMsg.value)
