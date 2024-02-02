@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "new": "plop"
   },
   "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
     "@antv/g6": "^4.8.21",
     "@element-plus/icons-vue": "^2.0.10",
     "@vueuse/core": "^10.1.2",

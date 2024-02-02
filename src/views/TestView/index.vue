@@ -6,9 +6,13 @@
     <div class="rect">响应式3</div>
   </div>
   <el-button type="primary" @click="handleClick">提交</el-button>
-  <van-button type="primary">vant按钮</van-button>
+  <van-button type="primary" @click="changeMockList">vant按钮</van-button>
   <DetailCard title="标题" :cardData="cardData" :label="label"></DetailCard>
-  <collapse-pannel></collapse-pannel>
+  <el-divider></el-divider>
+  <div v-for="item in mockList" :key="item.id">
+    <span>{{ item.name }}</span>
+    <span>{{ item.age }}</span>
+  </div>
 </template>
 <script setup>
 import axios from 'axios'
@@ -27,32 +31,49 @@ const label = ref({
   address: '地址',
   phone: '电话'
 })
-const list = ref([]);
-const loading = ref(false);
-const finished = ref(false);
-
-const onLoad = () => {
-  // 异步更新数据
-  // setTimeout 仅做示例，真实场景中一般为 ajax 请求
-  setTimeout(() => {
-    for (let i = 0; i < 10; i++) {
-      list.value.push(list.value.length + 1);
-    }
-
-    // 加载状态结束
-    loading.value = false;
-
-    // 数据全部加载完成
-    if (list.value.length >= 40) {
-      finished.value = true;
-    }
-  }, 1000);
-};
 const handleClick = () => {
   ElMessage({
     type: "success",
     message: "复制成功"
   });
+}
+
+const mockList = ref([
+  {
+    id: 1,
+    name: 'yangkai',
+    age: 15
+  },
+  {
+    id: 2,
+    name: 'hahaha',
+    age: 22
+  },
+  {
+    id: 3,
+    name: 'bababa',
+    age: 99
+  }
+])
+function changeMockList() {
+  const list = [
+    {
+      id: 4,
+      name: 'qwer',
+      age: 55
+    },
+    {
+      id: 5,
+      name: 'tyur',
+      age: 88
+    },
+    {
+      id: 6,
+      name: 'zxcv',
+      age: 55
+    }
+  ]
+  mockList.value = mockList.value.filter(item => item.id === 1)
 }
 </script>
 <style lang='scss' scoped>
